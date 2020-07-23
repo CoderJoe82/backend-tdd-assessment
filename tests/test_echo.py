@@ -7,7 +7,7 @@ Students are expected to edit this module, to add more tests to run
 against the 'echo.py' program.
 """
 
-__author__ = "???"
+__author__ = "Joseph Padgett with study hall/demo video"
 
 import sys
 import importlib
@@ -92,6 +92,17 @@ class TestEcho(unittest.TestCase):
     # Students: add more parser tests here
     #
 
+    def test_help(self):
+        """Check that we have the expected help usage output"""
+        args = ['-h']
+        stdout, stderr = run_capture(self.module.__file__, args)
+        with open('USAGE') as f:
+            usage = f.read()
+        self.assertEqual(
+            '\n'.join(stdout) + '\n', usage,
+            "Help usage output is not as expected"
+            )
+
     def test_echo(self):
         """Check if main() function prints anything at all"""
         stdout, stderr = run_capture(self.module.__file__)
@@ -118,6 +129,17 @@ class TestEcho(unittest.TestCase):
     # Students: add more cmd line options tests here.
     #
 
+    def test_upper_short(self):
+        """Check if short option '-u' performs uppercasing"""
+        args = ['-u', "hello world"]
+        with Capturing() as output:
+            self.module.main(args)
+        assert output, "The program did not print anything."
+        self.assertEqual(output[0], "HELLO WORLD")
+
+
+
 
 if __name__ == '__main__':
     unittest.main()
+
