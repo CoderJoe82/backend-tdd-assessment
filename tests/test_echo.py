@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Implements a test fixture for the echo.py module
-
 Students are expected to edit this module, to add more tests to run
 against the 'echo.py' program.
 """
@@ -101,7 +100,7 @@ class TestEcho(unittest.TestCase):
         self.assertEqual(
             '\n'.join(stdout) + '\n', usage,
             "Help usage output is not as expected"
-            )
+        )
 
     def test_echo(self):
         """Check if main() function prints anything at all"""
@@ -142,4 +141,3 @@ class TestEcho(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
