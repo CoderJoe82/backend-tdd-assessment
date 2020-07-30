@@ -123,18 +123,50 @@ class TestEcho(unittest.TestCase):
             self.module.main(args)
         assert output, "The program did not print anything."
         self.assertEqual(output[0], "hello world")
-
-    #
-    # Students: add more cmd line options tests here.
-    #
+    
+    def test_lower_long(self):
+        """Check if short option '--lower' performs lowercasing"""
+        args = ["--lower", "HELLO WORLD"]
+        with Capturing() as output:
+            self.module.main(args)
+        assert output, "The program did not print anything."
+        self.assertEqual(output[0], "hello world")
 
     def test_upper_short(self):
-        """Check if short option '-u' performs uppercasing"""
-        args = ['-u', "hello world"]
+        """Check if short option '-u' performs lowercasing"""
+        args = ["-u", "hello world"]
         with Capturing() as output:
             self.module.main(args)
         assert output, "The program did not print anything."
         self.assertEqual(output[0], "HELLO WORLD")
+
+    def test_upper_long(self):
+        """Check if short option '--upper' performs lowercasing"""
+        args = ["--upper", "hello world"]
+        with Capturing() as output:
+            self.module.main(args)
+        assert output, "The program did not print anything."
+        self.assertEqual(output[0], "HELLO WORLD")
+    
+    def test_title_short(self):
+        """Check if short option '-t' performs lowercasing"""
+        args = ["-t", "HELLO WORLD"]
+        with Capturing() as output:
+            self.module.main(args)
+        assert output, "The program did not print anything."
+        self.assertEqual(output[0], "Hello World")
+
+    def test_title_long(self):
+        """Check if short option '--title' performs lowercasing"""
+        args = ["--title", "HELLO WORLD"]
+        with Capturing() as output:
+            self.module.main(args)
+        assert output, "The program did not print anything."
+        self.assertEqual(output[0], "Hello World")
+
+    #
+    # Students: add more cmd line options tests here.
+    #
 
 
 
