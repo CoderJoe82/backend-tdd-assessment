@@ -26,9 +26,9 @@ def main(args):
 
     if ns.lower:
         print(ns.text.lower())
-    elif ns.upper:
+    if ns.upper:
         print(ns.text.upper())
-    elif ns.title:
+    if ns.title:
         print(ns.text.title())
     else:
         print(ns.text)
